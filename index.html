@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nuestra Historia 💚</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.carousel{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    animation:fade 24s infinite;
+}
+
+/* IMÁGENES DEL CARRUSEL */
+.slide:nth-child(1){
+    background-image:url('foto1.jpg');
+    animation-delay:0s;
+}
+
+.slide:nth-child(2){
+    background-image:url('foto2.jpg');
+    animation-delay:8s;
+}
+
+.slide:nth-child(3){
+    background-image:url('foto3.jpg');
+    animation-delay:16s;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.9)
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:10;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+.badge{
+    background:#1D8FDB;
+    color:black;
+    padding:12px 24px;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-size:6rem;
+    font-weight:800;
+    max-width:900px;
+    line-height:1;
+    margin-bottom:30px;
+}
+
+.hero p{
+    max-width:850px;
+    line-height:2;
+    color:rgba(255,255,255,0.85);
+    font-size:1.2rem;
+}
+
+/* ========================= */
+/* SECTION */
+/* ========================= */
+
+.section{
+    padding:120px 10%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h2{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.title p{
+    color:#b3b3b3;
+}
+
+/* ========================= */
+/* COUNTER */
+/* ========================= */
+
+.counter-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:50px;
+}
+
+.counter-card{
+    background:#121212;
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.counter-card:hover{
+    transform:translateY(-10px);
+    background:#181818;
+}
+
+.counter-number{
+    font-size:4rem;
+    color:#1D8FDB;
+    font-weight:800;
+}
+
+.counter-label{
+    margin-top:10px;
+    color:#b3b3b3;
+}
+
+/* ========================= */
+/* STORY CARDS */
+/* ========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:linear-gradient(
+        145deg,
+        #1a1a1a,
+        #0f0f0f
+    );
+
+    border-radius:35px;
+    padding:45px;
+    position:relative;
+    overflow:hidden;
+    transition:0.4s;
+    min-height:350px;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+}
+
+.card-number{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:6rem;
+    font-weight:800;
+    color:rgba(29,143,219,0.12);
+}
+
+.card h3{
+    font-size:2rem;
+    margin-bottom:25px;
+    position:relative;
+    z-index:2;
+}
+
+.card p{
+    line-height:2;
+    color:#d1d5db;
+    position:relative;
+    z-index:2;
+}
+
+/* ========================= */
+/* GALERÍA */
+/* ========================= */
+
+.gallery-container{
+    overflow:hidden;
+    position:relative;
+    width:100%;
+}
+
+.gallery-track{
+    display:flex;
+    gap:25px;
+    animation:scroll 35s linear infinite;
+    width:max-content;
+}
+
+.gallery-track:hover{
+    animation-play-state:paused;
+}
+
+.gallery-item{
+    min-width:350px;
+    height:500px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    background:#111;
+    flex-shrink:0;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.gallery-caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:25px;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        transparent
+    );
+    font-size:1rem;
+    line-height:1.6;
+}
+
+/* ========================= */
+/* FLIP CARDS */
+/* ========================= */
+
+.flip-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.flip-card{
+    background:transparent;
+    height:320px;
+    perspective:1000px;
+}
+
+.flip-card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform 0.8s;
+    transform-style:preserve-3d;
+    cursor:pointer;
+}
+
+.flip-card.flipped .flip-card-inner{
+    transform:rotateY(180deg);
+}
+
+.flip-front,
+.flip-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    padding:40px;
+
+    backface-visibility:hidden;
+}
+
+.flip-front{
+
+    background:linear-gradient(
+        145deg,
+        #1D8FDB,
+        #0d2e5d
+    );
+
+    font-size:2rem;
+    font-weight:800;
+    color:white;
+}
+
+.flip-back{
+
+    background:#121212;
+    color:#d1d5db;
+    line-height:2;
+
+    transform:rotateY(180deg);
+}
+
+/* ========================= */
+/* STATS */
+/* ========================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.stat{
+    background:#121212;
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+}
+
+.stat h3{
+    font-size:4rem;
+    color:#1D8FDB;
+    margin-bottom:15px;
+}
+
+.stat p{
+    color:#b3b3b3;
+}
+
+/* ========================= */
+/* QUOTES */
+/* ========================= */
+
+.quotes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.quote{
+    background:#121212;
+    border-radius:30px;
+    padding:40px;
+    transition:0.4s;
+}
+
+.quote:hover{
+    transform:translateY(-8px);
+}
+
+.quote p{
+    line-height:2;
+    color:#e5e7eb;
+}
+
+/* ========================= */
+/* FINAL */
+/* ========================= */
+
+.final{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 10%;
+    background:linear-gradient(
+        to bottom,
+        #000,
+        #070b14
+    );
+}
+
+.final-content{
+    max-width:1000px;
+}
+
+.final h2{
+    font-size:5rem;
+    margin-bottom:35px;
+}
+
+.final p{
+    line-height:2;
+    font-size:1.2rem;
+    color:#d1d5db;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    background:black;
+}
+
+/* ========================= */
+/* EDITABLE */
+/* ========================= */
+
+.editable{
+    outline:none;
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes fade{
+
+    0%{opacity:0;}
+    8%{opacity:1;}
+    30%{opacity:1;}
+    38%{opacity:0;}
+    100%{opacity:0;}
+
+}
+
+@keyframes scroll{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:3.5rem;
+    }
+
+    .title h2{
+        font-size:2.8rem;
+    }
+
+    .final h2{
+        font-size:3rem;
+    }
+
+    .counter-number{
+        font-size:3rem;
+    }
+
+    .gallery-item{
+        min-width:280px;
+        height:400px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="carousel">
+
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+
+        <div class="overlay"></div>
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            NUESTRA HISTORIA
+        </div>
+
+        <h1 contenteditable="true" class="editable">
+            El Amor Más Bonito
+        </h1>
+
+        <p contenteditable="true" class="editable">
+            Nos conocimos en 2012.
+            Nuestra historia inició cuando nos vimos desde la distancia.
+            Continuó con las llamadas en la madrugada y los mensajes de vez en cuando.
+            <br><br>
+            Primero fueron conversaciones.
+            Después rutina.
+            Después refugio.
+            Y un día entendimos
+            que ya éramos hogar.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- COUNTERS -->
+
+<section class="section">
+
+    <div class="title">
+        <h2>Tiempo Construyendo Nuestra Historia 💚</h2>
+    </div>
+
+    <h2 style="margin-bottom:20px;">
+        💙 Iniciamos nuestro hogar hace:
+    </h2>
+
+    <div class="counter-grid">
+
+        <div class="counter-card">
+            <div id="years1" class="counter-number">0</div>
+            <div class="counter-label">Años</div>
+        </div>
+
+        <div class="counter-card">
+            <div id="months1" class="counter-number">0</div>
+            <div class="counter-label">Meses</div>
+        </div>
+
+        <div class="counter-card">
+            <div id="days1" class="counter-number">0</div>
+            <div class="counter-label">Días</div>
+        </div>
+
+    </div>
+
+    <br><br><br>
+
+    <h2 style="margin-bottom:20px;">
+        Nos conocemos desde 2012 ✨
+    </h2>
+
+    <div class="counter-grid">
+
+        <div class="counter-card">
+            <div id="years2" class="counter-number">0</div>
+            <div class="counter-label">Años</div>
+        </div>
+
+        <div class="counter-card">
+            <div id="months2" class="counter-number">0</div>
+            <div class="counter-label">Meses</div>
+        </div>
+
+        <div class="counter-card">
+            <div id="days2" class="counter-number">0</div>
+            <div class="counter-label">Días</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STORY -->
+
+<section class="section">
+
+    <div class="title">
+        <h2>Nuestra Historia</h2>
+
+        <p>
+            La historia de dos personas
+            que siempre terminaban encontrándose.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-number">01</div>
+
+            <h3>El inicio de todo</h3>
+
+            <p contenteditable="true" class="editable">
+
+                En 2012 nuestras vidas se cruzaron por primera vez.
+                <br><br>
+
+                Todavía faltaban años para madurar, crecer y vivir lo que cada uno quería.
+                <br><br>
+
+                Nos veíamos de vez en cuando,
+                pero aún no era el momento.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">02</div>
+
+            <h3>Cuando comenzamos a hablar todos los días</h3>
+
+            <p contenteditable="true" class="editable">
+
+                Las conversaciones empezaron
+                a volverse rutina.
+                <br><br>
+
+                Los "ya llegaste",
+                los "cómo estuvo tu día"
+                y los mensajes eternos
+                comenzaron a transformar la amistad
+                en un lugar seguro.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">03</div>
+
+            <h3>Cuando dejamos de ser solo amigos</h3>
+
+            <p contenteditable="true" class="editable">
+
+                15 diciembre 2024.
+                <br><br>
+
+                Llegó el momento en que quisiste sentar cabeza jajaja,
+                y desde entonces todo ha sido luz para nosotros.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">04</div>
+
+            <h3>El primer "te amo"</h3>
+
+            <p contenteditable="true" class="editable">
+
+                16 marzo 2025.
+                <br><br>
+
+                Desde entonces, el amor empezó a transformarse
+                y, en medio de esas promesas,
+                nació la ilusión de formar una familia juntos.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>Los recuerdos que nos trajeron hasta aquí 💙</h2>
+
+        <p>
+            Cada foto cuenta una parte de nuestra historia.
+        </p>
+
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="gallery-track">
+
+            <div class="gallery-item">
+                <img src="foto1.jpg" alt="Girasoles">
+                <div class="gallery-caption editable" contenteditable="true">
+                    En el campo de girasoles, donde todo se ve más bonito.
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto2.jpg" alt="Café">
+                <div class="gallery-caption editable" contenteditable="true">
+                    Nuestras noches en el café, con sonrisas que lo dicen todo.
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto3.jpg" alt="Momento íntimo">
+                <div class="gallery-caption editable" contenteditable="true">
+                    Esos momentos donde solo somos nosotros dos.
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto4.jpg" alt="En casa">
+                <div class="gallery-caption editable" contenteditable="true">
+                    En nuestro hogar, donde la paz vive.
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto5.jpg" alt="Juntos">
+                <div class="gallery-caption editable" contenteditable="true">
+                    Simplemente nosotros, como siempre.
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="foto6.jpg" alt="Te amo">
+                <div class="gallery-caption editable" contenteditable="true">
+                    El amor en su forma más pura.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FLIP CARDS -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>Las cosas que nunca dejamos de elegir ✨</h2>
+
+        <p>
+            Algunas cosas simplemente siempre fueron nosotros.
+        </p>
+
+    </div>
+
+    <div class="flip-grid">
+
+        <div class="flip-card">
+
+            <div class="flip-card-inner">
+
+                <div class="flip-front">
+                    Hogar
+                </div>
+
+                <div class="flip-back">
+                    No importa el día,
+                    siempre terminamos sintiendo paz en el otro.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="flip-card">
+
+            <div class="flip-card-inner">
+
+                <div class="flip-front">
+                    Tiempo
+                </div>
+
+                <div class="flip-back">
+                    En el mejor momento volvimos a conectar.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="flip-card">
+
+            <div class="flip-card-inner">
+
+                <div class="flip-front">
+                    Nosotros
+                </div>
+
+                <div class="flip-back">
+                    Primero amigos.
+                    Después refugio.
+                    Después amor.
+                    Después hogar.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="flip-card">
+
+            <div class="flip-card-inner">
+
+                <div class="flip-front">
+                    Futuro
+                </div>
+
+                <div class="flip-back">
+                    Las conversaciones dejaron de ser solo sobre el presente.
+                    Empezamos a imaginar una vida.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>Números en nuestro Chat 💚</h2>
+
+        <p>
+            Lo que el chat dice sobre ustedes.
+        </p>
+
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat">
+            <h3>2051</h3>
+            <p>"Te amo" enviados</p>
+        </div>
+
+        <div class="stat">
+            <h3>55</h3>
+            <p>"Te extraño"</p>
+        </div>
+
+        <div class="stat">
+            <h3>10-15</h3>
+            <p>Discusiones/tensiones superadas juntos</p>
+        </div>
+
+        <div class="stat">
+            <h3>∞</h3>
+            <p>Momentos siendo hogar</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <div class="final-content">
+
+        <h2 contenteditable="true" class="editable">
+            Y al final…
+        </h2>
+
+        <p contenteditable="true" class="editable">
+
+            Esta historia nunca se trató de prisa.
+            <br><br>
+
+            Se trató de tiempo.
+            De crecer.
+            De encontrarse una y otra vez.
+            De construir confianza antes que promesas.
+            <br><br>
+
+            Somos el mejor regalo que Dios nos pudo dar.
+            <br><br>
+
+            Sigamos construyendo la familia y el hogar que nos soñamos.
+
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+    ¡Hecho con amor! 💚
+    <br><br>
+    Felices 18 meses mi vida • 15/06/2026
+</footer>
+
+<script>
+
+/* ========================= */
+/* CONTADORES */
+/* ========================= */
+
+function updateCounter(startDate, yearsId, monthsId, daysId){
+
+    const start = new Date(startDate);
+    const today = new Date();
+
+    let years = today.getFullYear() - start.getFullYear();
+    let months = today.getMonth() - start.getMonth();
+    let days = today.getDate() - start.getDate();
+
+    if(days < 0){
+        months--;
+        days += 30;
+    }
+
+    if(months < 0){
+        years--;
+        months += 12;
+    }
+
+    document.getElementById(yearsId).innerText = years;
+    document.getElementById(monthsId).innerText = months;
+    document.getElementById(daysId).innerText = days;
+}
+
+/* NOVIOS */
+
+updateCounter(
+    "2024-12-15",
+    "years1",
+    "months1",
+    "days1"
+);
+
+/* DESDE QUE SE CONOCEN */
+
+updateCounter(
+    "2012-01-01",
+    "years2",
+    "months2",
+    "days2"
+);
+
+const cards = document.querySelectorAll('.flip-card');
+
+cards.forEach(card => {
+
+    /* GIRAR AL HACER CLICK */
+
+    card.addEventListener('click', () => {
+
+        card.classList.toggle('flipped');
+
+    });
+
+    /* VOLVER AL FRENTE AL QUITAR EL MOUSE */
+
+    card.addEventListener('mouseleave', () => {
+
+        card.classList.remove('flipped');
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
