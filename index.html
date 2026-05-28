@@ -57,17 +57,17 @@ body{
 
 /* IMÁGENES DEL CARRUSEL */
 .slide:nth-child(1){
-    background-image:url('foto1.jpg');
+    background-image:url('images/foto1.jpg');
     animation-delay:0s;
 }
 
 .slide:nth-child(2){
-    background-image:url('foto2.jpg');
+    background-image:url('images/foto2.jpg');
     animation-delay:8s;
 }
 
 .slide:nth-child(3){
-    background-image:url('foto3.jpg');
+    background-image:url('images/foto3.jpg');
     animation-delay:16s;
 }
 
@@ -229,41 +229,30 @@ body{
 }
 
 /* ========================= */
-/* GALERÍA */
+/* GALERÍA - GRID RECTANGULAR */
 /* ========================= */
 
-.gallery-container{
-    overflow:hidden;
-    position:relative;
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
     width:100%;
 }
 
-.gallery-track{
-    display:flex;
-    gap:25px;
-    animation:scroll 35s linear infinite;
-    width:max-content;
-}
-
-.gallery-track:hover{
-    animation-play-state:paused;
-}
-
 .gallery-item{
-    min-width:350px;
-    height:500px;
-    border-radius:30px;
-    overflow:hidden;
     position:relative;
+    overflow:hidden;
+    border-radius:20px;
     background:#111;
-    flex-shrink:0;
+    aspect-ratio:3/4;
+    cursor:pointer;
 }
 
 .gallery-item img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:0.5s;
+    transition:transform 0.5s ease;
 }
 
 .gallery-item:hover img{
@@ -274,14 +263,22 @@ body{
     position:absolute;
     bottom:0;
     width:100%;
-    padding:25px;
+    padding:20px;
     background:linear-gradient(
         to top,
-        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.5),
         transparent
     );
-    font-size:1rem;
+    font-size:0.95rem;
     line-height:1.6;
+    color:white;
+    opacity:0;
+    transition:opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-caption{
+    opacity:1;
 }
 
 /* ========================= */
@@ -471,18 +468,6 @@ footer{
 
 }
 
-@keyframes scroll{
-
-    from{
-        transform:translateX(0);
-    }
-
-    to{
-        transform:translateX(-50%);
-    }
-
-}
-
 /* ========================= */
 /* RESPONSIVE */
 /* ========================= */
@@ -505,11 +490,21 @@ footer{
         font-size:3rem;
     }
 
-    .gallery-item{
-        min-width:280px;
-        height:400px;
+    .gallery-grid{
+        grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
     }
 
+}
+
+@media(max-width:600px){
+    .gallery-grid{
+        grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+        gap:15px;
+    }
+
+    .gallery-item{
+        border-radius:15px;
+    }
 }
 
 </style>
@@ -728,52 +723,48 @@ footer{
 
     </div>
 
-    <div class="gallery-container">
+    <div class="gallery-grid">
 
-        <div class="gallery-track">
-
-            <div class="gallery-item">
-                <img src="foto1.jpg" alt="Girasoles">
-                <div class="gallery-caption editable" contenteditable="true">
-                    En el campo de girasoles, donde todo se ve más bonito.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto1.jpg" alt="Girasoles">
+            <div class="gallery-caption editable" contenteditable="true">
+                En el campo de girasoles, donde todo se ve más bonito.
             </div>
+        </div>
 
-            <div class="gallery-item">
-                <img src="foto2.jpg" alt="Café">
-                <div class="gallery-caption editable" contenteditable="true">
-                    Nuestras noches en el café, con sonrisas que lo dicen todo.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto2.jpg" alt="Café">
+            <div class="gallery-caption editable" contenteditable="true">
+                Nuestras noches en el café, con sonrisas que lo dicen todo.
             </div>
+        </div>
 
-            <div class="gallery-item">
-                <img src="foto3.jpg" alt="Momento íntimo">
-                <div class="gallery-caption editable" contenteditable="true">
-                    Esos momentos donde solo somos nosotros dos.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto3.jpg" alt="Momento íntimo">
+            <div class="gallery-caption editable" contenteditable="true">
+                Esos momentos donde solo somos nosotros dos.
             </div>
+        </div>
 
-            <div class="gallery-item">
-                <img src="foto4.jpg" alt="En casa">
-                <div class="gallery-caption editable" contenteditable="true">
-                    En nuestro hogar, donde la paz vive.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto4.jpg" alt="En casa">
+            <div class="gallery-caption editable" contenteditable="true">
+                En nuestro hogar, donde la paz vive.
             </div>
+        </div>
 
-            <div class="gallery-item">
-                <img src="foto5.jpg" alt="Juntos">
-                <div class="gallery-caption editable" contenteditable="true">
-                    Simplemente nosotros, como siempre.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto5.jpg" alt="Juntos">
+            <div class="gallery-caption editable" contenteditable="true">
+                Simplemente nosotros, como siempre.
             </div>
+        </div>
 
-            <div class="gallery-item">
-                <img src="foto6.jpg" alt="Te amo">
-                <div class="gallery-caption editable" contenteditable="true">
-                    El amor en su forma más pura.
-                </div>
+        <div class="gallery-item">
+            <img src="images/foto6.jpg" alt="Te amo">
+            <div class="gallery-caption editable" contenteditable="true">
+                El amor en su forma más pura.
             </div>
-
         </div>
 
     </div>
