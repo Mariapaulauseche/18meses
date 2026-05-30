@@ -473,6 +473,8 @@ footer{
 .audio-player audio{
     width: 280px;
     height: 35px;
+    pointer-events: auto !important;
+    cursor: pointer;
 }
 
 /* ========================= */
@@ -970,7 +972,7 @@ footer{
 
 <!-- AUDIO DE FONDO -->
 <div class="audio-player">
-    <audio autoplay loop muted>
+    <audio id="audioBackground" autoplay loop>
         <source src="audio/te-voy-a-amar.mp3.mp3" type="audio/mpeg">
     </audio>
 </div>
@@ -1037,16 +1039,23 @@ cards.forEach(card => {
 
 });
 
-// PERMITIR INTERACCIÓN CON AUDIO
+// CONFIGURAR EL AUDIO
 document.addEventListener('click', function() {
-    const audio = document.querySelector('.audio-player audio');
-    if (audio && audio.muted) {
+    const audio = document.getElementById('audioBackground');
+    if (audio.paused) {
         audio.muted = false;
+        audio.volume = 0.3; // Volumen 30% (en escala de 0 a 1)
         audio.play().catch(function(error) {
             console.log('Error al reproducir audio:', error);
         });
     }
 }, { once: true });
+
+// Asegurar que el volumen sea 0.3 al cargar
+window.addEventListener('load', function() {
+    const audio = document.getElementById('audioBackground');
+    audio.volume = 0.3;
+});
 
 </script>
 
