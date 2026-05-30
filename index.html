@@ -455,7 +455,7 @@ footer{
 }
 
 /* ========================= */
-/* AUDIO PLAYER */
+/* AUDIO PLAYER PERSONALIZADO */
 /* ========================= */
 
 .audio-player{
@@ -463,18 +463,62 @@ footer{
     bottom: 30px;
     right: 30px;
     background: linear-gradient(135deg, #1D8FDB, #0d2e5d);
-    padding: 15px 20px;
+    padding: 20px;
     border-radius: 50px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     z-index: 1000;
     backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.audio-player audio{
-    width: 280px;
-    height: 35px;
-    pointer-events: auto !important;
+.audio-player audio {
+    display: none;
+}
+
+.play-pause-btn {
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    color: #1D8FDB;
+    font-weight: bold;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.1);
+    background: #e0e0e0;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-icon {
+    font-size: 18px;
+}
+
+.volume-slider {
+    width: 100px;
+    height: 6px;
+    cursor: pointer;
+    accent-color: white;
+}
+
+.volume-value {
+    font-size: 12px;
+    min-width: 30px;
+    text-align: center;
 }
 
 /* ========================= */
@@ -532,10 +576,23 @@ footer{
     .audio-player{
         bottom: 15px;
         right: 15px;
+        padding: 15px;
+        gap: 10px;
     }
 
-    .audio-player audio{
-        width: 200px;
+    .volume-slider {
+        width: 70px;
+    }
+
+    .play-pause-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .volume-value {
+        font-size: 10px;
+        min-width: 25px;
     }
 }
 
@@ -970,11 +1027,19 @@ footer{
     Felices 18 meses mi vida • 15/06/2026
 </footer>
 
-<!-- AUDIO DE FONDO -->
+<!-- AUDIO DE FONDO CON CONTROLES PERSONALIZADOS -->
 <div class="audio-player">
-    <audio id="audioBackground" autoplay loop>
+    <audio id="audioBackground" preload="auto">
         <source src="audio/te-voy-a-amar.mp3.mp3" type="audio/mpeg">
     </audio>
+    
+    <button class="play-pause-btn" id="playPauseBtn">▶️</button>
+    
+    <div class="volume-control">
+        <span class="volume-icon">🔊</span>
+        <input type="range" min="0" max="100" value="30" class="volume-slider" id="volumeSlider">
+        <span class="volume-value" id="volumeValue">30%</span>
+    </div>
 </div>
 
 <script>
@@ -1039,22 +1104,49 @@ cards.forEach(card => {
 
 });
 
-// CONFIGURAR EL AUDIO
-document.addEventListener('click', function() {
-    const audio = document.getElementById('audioBackground');
+/* ========================= */
+/* CONTROLES DE AUDIO PERSONALIZADOS */
+/* ========================= */
+
+const audio = document.getElementById('audioBackground');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeValue = document.getElementById('volumeValue');
+
+// Establecer volumen inicial
+audio.volume = 0.3;
+
+// Controlar play/pause
+playPauseBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
     if (audio.paused) {
-        audio.muted = false;
-        audio.volume = 0.3; // Volumen 30% (en escala de 0 a 1)
-        audio.play().catch(function(error) {
-            console.log('Error al reproducir audio:', error);
-        });
+        audio.play().catch(error => console.log('Error al reproducir:', error));
+        playPauseBtn.textContent = '⏸️';
+    } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶️';
+    }
+});
+
+// Controlar volumen
+volumeSlider.addEventListener('input', function(e) {
+    e.stopPropagation();
+    const volume = this.value / 100;
+    audio.volume = volume;
+    volumeValue.textContent = this.value + '%';
+});
+
+// Permitir reproducción automática al hacer click
+document.addEventListener('click', function() {
+    if (audio.paused) {
+        audio.play().catch(error => console.log('Error al reproducir:', error));
+        playPauseBtn.textContent = '⏸️';
     }
 }, { once: true });
 
-// Asegurar que el volumen sea 0.3 al cargar
-window.addEventListener('load', function() {
-    const audio = document.getElementById('audioBackground');
-    audio.volume = 0.3;
+// Actualizar botón cuando termina la canción
+audio.addEventListener('ended', function() {
+    playPauseBtn.textContent = '▶️';
 });
 
 </script>
