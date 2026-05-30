@@ -820,15 +820,9 @@ display:none;
 
     <div class="welcome-card">
 
-        <div class="heart-icon">💙</div>
+        <h1>Para el amor de mi vida 💙</h1>
 
-        <h1>Para el amor de mi vida</h1>
-
-        <p>
-            Preparé algo especial para nosotros.
-        </p>
-
-        <button id="startExperience" class="start-btn">
+        <button id="startExperience">
             Comencemos ✨
         </button>
 
@@ -1298,7 +1292,29 @@ display:none;
 </div>
 
 <script>
+/* Pagina Inicio*/
+    document.addEventListener('DOMContentLoaded', () => {
 
+    const welcomeScreen =
+        document.getElementById('welcomeScreen');
+
+    const startExperience =
+        document.getElementById('startExperience');
+
+    const audio =
+        document.getElementById('audioBackground');
+
+    startExperience.addEventListener('click', () => {
+
+        audio.play().catch(error =>
+            console.log(error)
+        );
+
+        welcomeScreen.classList.add('hide');
+
+    });
+
+});
 /* ========================= */
 /* CONTADORES */
 /* ========================= */
@@ -1370,9 +1386,9 @@ document.getElementById('startExperience');
 
 startExperience.addEventListener('click', () => {
 
-    audio.play();
-
-    playPauseBtn.textContent = '⏸️';
+    audio.play().catch(err => {
+        console.log(err);
+    });
 
     welcomeScreen.classList.add('hide');
 
