@@ -822,9 +822,12 @@ display:none;
 
         <h1>Para el amor de mi vida 💙</h1>
 
-        <button id="startExperience">
-            Comencemos ✨
-        </button>
+        <button
+    id="startExperience"
+    class="start-btn"
+>
+    Comencemos ✨
+</button>
 
     </div>
 
@@ -1107,8 +1110,6 @@ display:none;
     </div>
 
 </section>
-
-</section>
 <!-- FLIP CARDS -->
 
 <section class="section">
@@ -1306,15 +1307,16 @@ display:none;
 
     startExperience.addEventListener('click', () => {
 
-        audio.play().catch(error =>
-            console.log(error)
-        );
+        audio.volume = 0.3;
+
+        audio.play();
 
         welcomeScreen.classList.add('hide');
 
     });
 
 });
+    
 /* ========================= */
 /* CONTADORES */
 /* ========================= */
@@ -1378,21 +1380,7 @@ cards.forEach(card => {
 /* ========================= */
 /* CONTROLES DE AUDIO PERSONALIZADOS */
 /* ========================= */
-const welcomeScreen =
-document.getElementById('welcomeScreen');
-
-const startExperience =
-document.getElementById('startExperience');
-
-startExperience.addEventListener('click', () => {
-
-    audio.play().catch(err => {
-        console.log(err);
-    });
-
-    welcomeScreen.classList.add('hide');
-
-});
+const audio = document.getElementById('audioBackground');
 const playPauseBtn = document.getElementById('playPauseBtn');
 const volumeSlider = document.getElementById('volumeSlider');
 const volumeValue = document.getElementById('volumeValue');
