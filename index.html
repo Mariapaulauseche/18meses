@@ -971,7 +971,7 @@ footer{
 <!-- AUDIO DE FONDO -->
 <div class="audio-player">
     <audio autoplay loop muted>
-        <source src="audio/te-voy-a-amar.mp3" type="audio/mpeg">
+        <source src="audio/te-voy-a-amar.mp3.mp3" type="audio/mpeg">
     </audio>
 </div>
 
@@ -1040,9 +1040,11 @@ cards.forEach(card => {
 // PERMITIR INTERACCIÓN CON AUDIO
 document.addEventListener('click', function() {
     const audio = document.querySelector('.audio-player audio');
-    if (audio.muted) {
+    if (audio && audio.muted) {
         audio.muted = false;
-        audio.play();
+        audio.play().catch(function(error) {
+            console.log('Error al reproducir audio:', error);
+        });
     }
 }, { once: true });
 
