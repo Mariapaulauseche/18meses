@@ -30,11 +30,7 @@ body{
 /* ========================= */
 /* PANTALLA DE BIENVENIDA */
 /* ========================= */
-    /* ========================= */
-/* PANTALLA DE BIENVENIDA */
-/* ========================= */
-
-.welcome-screen{
+  .welcome-screen{
 
     position:fixed;
     inset:0;
@@ -136,6 +132,19 @@ body{
     transform:
     translateY(-4px)
     scale(1.05);
+
+}
+    .welcome-subtitle{
+
+    margin: 15px 0 35px;
+
+    font-size: 1.2rem;
+
+    font-weight: 400;
+
+    color: rgba(255,255,255,.8);
+
+    line-height: 1.6;
 
 }
 /* ========================= */
@@ -1014,16 +1023,20 @@ transparent 40%
     <div class="welcome-card">
 
         <h1>Para el amor de mi vida 💙</h1>
-         <h2> Gracias por contruir esta vida juntos.</h2>
+
+        <h2 class="welcome-subtitle">
+            Gracias por construir esta vida juntos.
+        </h2>
 
         <button
-    id="startExperience"
-    class="start-btn">
-    Comencemos ✨
-</button>
+            id="startExperience"
+            class="start-btn">
+            Comencemos ✨
+        </button>
 
     </div>
 
+</div>
 </div>
 <!-- HERO -->
 
@@ -1461,16 +1474,16 @@ transparent 40%
 
     </div>
    
-</section>
-<section class="secret-letter-section">
+    </section>
+    <section class="secret-letter-section">
 
     <button id="openLetter" class="letter-btn">
         💌 Abrir Carta
     </button>
 
-</section>
+    </section>
 
-<div id="letterModal" class="letter-modal">
+    <div id="letterModal" class="letter-modal">
 
     <div class="letter-modal-content">
 
@@ -1518,8 +1531,7 @@ transparent 40%
 
     </div>
 
-</div>
-</section>
+    </div>
 
 <footer>
     ¡Hecho con amor! 💚
