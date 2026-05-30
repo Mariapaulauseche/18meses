@@ -527,7 +527,94 @@ footer{
     100%{opacity:0;}
 
 }
+/* ========================= */
+/* VIDEO NOSOTROS */
+/* ========================= */
 
+.video-section{
+    text-align:center;
+    padding:40px 10% 80px;
+}
+
+.heart-btn{
+
+    border:none;
+
+    background:linear-gradient(
+        135deg,
+        #1D8FDB,
+        #0d2e5d
+    );
+
+    color:white;
+
+    padding:18px 40px;
+
+    border-radius:999px;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.4s;
+
+    box-shadow:
+    0 10px 30px rgba(
+        29,
+        143,
+        219,
+        .35
+    );
+
+}
+
+.heart-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.05);
+
+}
+
+.video-container{
+
+    max-width:900px;
+
+    margin:30px auto 0;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    max-height:0;
+
+    opacity:0;
+
+    transition:
+    max-height .8s ease,
+    opacity .5s ease;
+
+}
+
+.video-container.show{
+
+    max-height:1000px;
+
+    opacity:1;
+
+}
+
+.video-container video{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:25px;
+
+}
 /* ========================= */
 /* RESPONSIVE */
 /* ========================= */
@@ -862,7 +949,21 @@ footer{
     </div>
 
 </section>
+<section class="video-section">
 
+    <button id="toggleVideo" class="heart-btn">
+        ❤️ Nosotros
+    </button>
+
+    <div id="videoContainer" class="video-container">
+
+        <video controls preload="metadata">
+            <source src="video/nosotros.mp4" type="video/mp4">
+        </video>
+
+    </div>
+
+</section>
 <!-- FLIP CARDS -->
 
 <section class="section">
@@ -1177,6 +1278,29 @@ document.querySelectorAll(
 });
 
 </script>
+// boton video galeria 
+    const toggleVideo =
+document.getElementById('toggleVideo');
 
+const videoContainer =
+document.getElementById('videoContainer');
+
+toggleVideo.addEventListener('click', () => {
+
+    videoContainer.classList.toggle('show');
+
+    if(videoContainer.classList.contains('show')){
+
+        toggleVideo.innerHTML =
+        '💚 Ocultar Video';
+
+    }else{
+
+        toggleVideo.innerHTML =
+        '❤️ Clic';
+
+    }
+
+});
 </body>
 </html>
