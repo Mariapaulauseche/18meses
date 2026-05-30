@@ -1057,15 +1057,17 @@ function updateCounter(startDate, yearsId, monthsId, daysId){
     let months = today.getMonth() - start.getMonth();
     let days = today.getDate() - start.getDate();
 
-    if(days < 0){
-        months--;
-        days += 30;
-    }
+  if (days < 0) {
+    months--;
 
-    if(months < 0){
-        years--;
-        months += 12;
-    }
+    const lastMonth = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        0
+    );
+
+    days += lastMonth.getDate();
+}
 
     document.getElementById(yearsId).innerText = years;
     document.getElementById(monthsId).innerText = months;
