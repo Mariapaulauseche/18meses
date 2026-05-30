@@ -459,13 +459,18 @@ footer{
 /* ========================= */
 
 .audio-player{
-    background:rgba(255,255,255,0.08);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(
-        255,255,255,0.15
-    );
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #1D8FDB, #0d2e5d);
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .audio-player audio {
@@ -1052,10 +1057,15 @@ function updateCounter(startDate, yearsId, monthsId, daysId){
     let months = today.getMonth() - start.getMonth();
     let days = today.getDate() - start.getDate();
 
-if(days < 0){
-    months--;
-    days += 30;
-}
+    if(days < 0){
+        months--;
+        days += 30;
+    }
+
+    if(months < 0){
+        years--;
+        months += 12;
+    }
 
     document.getElementById(yearsId).innerText = years;
     document.getElementById(monthsId).innerText = months;
