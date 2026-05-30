@@ -605,6 +605,109 @@ footer{
     100%{opacity:0;}
 
 }
+    /* ========================= */
+/* CARTA SECRETA */
+/* ========================= */
+
+.secret-letter-section{
+
+    text-align:center;
+    padding:80px 10%;
+
+}
+
+.letter-btn{
+
+    border:none;
+
+    background:linear-gradient(
+        135deg,
+        #1D8FDB,
+        #0d2e5d
+    );
+
+    color:white;
+
+    padding:18px 40px;
+
+    border-radius:999px;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.letter-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.05);
+
+}
+
+.secret-letter{
+
+    max-width:900px;
+
+    margin:40px auto 0;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transition:
+    max-height 1s ease,
+    opacity .8s ease;
+
+}
+
+.secret-letter.show{
+
+    max-height:2500px;
+
+    opacity:1;
+
+}
+
+.letter-paper{
+
+    background:
+    linear-gradient(
+        180deg,
+        #fffdf7,
+        #f8f4ea
+    );
+
+    color:#222;
+
+    padding:60px;
+
+    border-radius:30px;
+
+    text-align:left;
+
+    line-height:2;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.25);
+
+}
+
+.letter-paper h2{
+
+    text-align:center;
+    margin-bottom:30px;
+
+    color:#0d2e5d;
+
+}
 /* ========================= */
 /* VIDEO NOSOTROS */
 /* ========================= */
@@ -1215,7 +1318,69 @@ display:none;
         </p>
 
     </div>
+<section class="secret-letter-section">
 
+    <button id="openLetter" class="letter-btn">
+        💌 Abrir Carta
+    </button>
+
+    <div id="secretLetter" class="secret-letter">
+
+        <div class="letter-paper">
+
+            <h2>Para el amor de mi vida 💙</h2>
+
+            <p>
+
+                Mi amor,
+
+                <br><br>
+
+                Si pudiera volver al 2012 sabiendo todo lo que viviríamos,
+                volvería a elegir cada conversación,
+                cada espera y cada momento que nos trajo hasta aquí.
+
+                <br><br>
+
+                Gracias por convertirte en mi hogar,
+                por enseñarme que el amor es paz,
+                confianza y compañía.
+
+                <br><br>
+
+                Contigo aprendí que los mejores planes no siempre son los más grandes,
+                sino aquellos donde simplemente estamos juntos.
+
+                <br><br>
+
+                Amo la vida que estamos construyendo,
+                los sueños que compartimos
+                y todo lo que todavía nos falta por vivir.
+
+                <br><br>
+
+                Si algún día dudas de algo,
+                recuerda esto:
+
+                <br><br>
+
+                Te elegiría una y otra vez.
+
+                <br><br>
+
+                Con todo mi amor,
+
+                <br><br>
+
+                💙 Tu futura esposa
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 </section>
 
 <footer>
@@ -1421,6 +1586,34 @@ toggleVideo.addEventListener('click', () => {
 
         ourVideo.pause();
         ourVideo.currentTime = 0;
+
+    }
+
+});
+    const openLetter =
+document.getElementById('openLetter');
+
+const secretLetter =
+document.getElementById('secretLetter');
+
+openLetter.addEventListener('click', () => {
+
+    secretLetter.classList.toggle('show');
+
+    if(secretLetter.classList.contains('show')){
+
+        openLetter.innerHTML =
+        '💙 Guardar Carta';
+
+        secretLetter.scrollIntoView({
+            behavior:'smooth',
+            block:'start'
+        });
+
+    }else{
+
+        openLetter.innerHTML =
+        '💌 Abrir Carta';
 
     }
 
