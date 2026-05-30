@@ -231,11 +231,19 @@ body{
 /* ========================= */
 /* GALERÍA - GRID RECTANGULAR */
 /* ========================= */
-.gallery-grid{
-    columns:3;
+
+    .gallery-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
 }
-
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    background:#111;
+}
 .gallery-item{
     break-inside:avoid;
     margin-bottom:20px;
@@ -1277,7 +1285,7 @@ document.querySelectorAll(
 
 });
 
-</script>
+
 // boton video galeria 
     const toggleVideo =
 document.getElementById('toggleVideo');
@@ -1302,5 +1310,6 @@ toggleVideo.addEventListener('click', () => {
     }
 
 });
+    </script>
 </body>
 </html>
