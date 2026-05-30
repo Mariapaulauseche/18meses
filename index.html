@@ -595,6 +595,16 @@ footer{
         min-width: 25px;
     }
 }
+    .fade-up{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:none;
+}
 
 </style>
 </head>
@@ -1147,6 +1157,30 @@ document.addEventListener('click', function() {
 // Actualizar botón cuando termina la canción
 audio.addEventListener('ended', function() {
     playPauseBtn.textContent = '▶️';
+});
+
+    // Scroll Suave
+    const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('show');
+
+        }
+
+    });
+
+});
+
+document.querySelectorAll(
+'.section'
+).forEach(section => {
+
+    section.classList.add('fade-up');
+    observer.observe(section);
+
 });
 
 </script>
