@@ -30,7 +30,11 @@ body{
 /* ========================= */
 /* PANTALLA DE BIENVENIDA */
 /* ========================= */
-    .welcome-screen{
+    /* ========================= */
+/* PANTALLA DE BIENVENIDA */
+/* ========================= */
+
+.welcome-screen{
 
     position:fixed;
     inset:0;
@@ -61,10 +65,12 @@ body{
     visibility:hidden;
 
 }
+
 .welcome-card{
 
     text-align:center;
-    max-width:550px;
+
+    width:min(550px,90%);
 
     background:rgba(255,255,255,.04);
 
@@ -84,7 +90,10 @@ body{
 .welcome-card h1{
 
     font-size:3rem;
+
     margin-bottom:20px;
+
+    line-height:1.2;
 
 }
 
