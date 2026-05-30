@@ -1052,16 +1052,9 @@ function updateCounter(startDate, yearsId, monthsId, daysId){
     let months = today.getMonth() - start.getMonth();
     let days = today.getDate() - start.getDate();
 
-  if (days < 0) {
+if(days < 0){
     months--;
-
-    const lastMonth = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        0
-    );
-
-    days += lastMonth.getDate();
+    days += 30;
 }
 
     document.getElementById(yearsId).innerText = years;
