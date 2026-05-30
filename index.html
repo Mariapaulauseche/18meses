@@ -30,6 +30,37 @@ body{
 /* ========================= */
 /* PANTALLA DE BIENVENIDA */
 /* ========================= */
+    .welcome-screen{
+
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #000,
+        #071425
+    );
+
+    z-index:99999;
+
+    transition:1s;
+
+}
+
+.welcome-screen.hide{
+
+    opacity:0;
+    visibility:hidden;
+
+}
 .welcome-card{
 
     text-align:center;
