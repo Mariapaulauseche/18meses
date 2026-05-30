@@ -1328,7 +1328,94 @@ display:none;
     </div>
 
 </section>
+<!--Carta-->
+    .letter-modal{
 
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.85);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.4s;
+
+    z-index:100000;
+
+}
+
+.letter-modal.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.letter-modal-content{
+
+    width:min(900px,90%);
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    background:
+    linear-gradient(
+        180deg,
+        #101827,
+        #0b1120
+    );
+
+    color:white;
+
+    padding:60px;
+
+    border-radius:35px;
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.5);
+
+    position:relative;
+
+}
+
+.letter-modal-content h2{
+
+    text-align:center;
+    margin-bottom:30px;
+    color:#1D8FDB;
+
+}
+
+.letter-modal-content p{
+
+    line-height:2;
+    font-size:1.1rem;
+
+}
+
+.close-letter{
+
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+}
 <!-- FINAL -->
 
 <section class="final">
@@ -1364,63 +1451,58 @@ display:none;
         💌 Abrir Carta
     </button>
 
-    <div id="secretLetter" class="secret-letter">
+</section>
 
-        <div class="letter-paper">
+<div id="letterModal" class="letter-modal">
 
-            <h2>Para el amor de mi vida 💙</h2>
+    <div class="letter-modal-content">
 
-            <p>
+        <button id="closeLetter" class="close-letter">
+            ✕
+        </button>
 
-                Mi amor,
+        <h2>Para el amor de mi vida 💙</h2>
 
-                <br><br>
+        <p>
 
-                Si pudiera volver al 2012 sabiendo todo lo que viviríamos,
-                volvería a elegir cada conversación,
-                cada espera y cada momento que nos trajo hasta aquí.
+            Mi amor,
 
-                <br><br>
+            <br><br>
 
-                Gracias por convertirte en mi hogar,
-                por enseñarme que el amor es paz,
-                confianza y compañía.
+            Si pudiera volver al 2012 sabiendo todo lo que viviríamos,
+            volvería a elegir cada conversación,
+            cada espera y cada momento que nos trajo hasta aquí.
 
-                <br><br>
+            <br><br>
 
-                Contigo aprendí que los mejores planes no siempre son los más grandes,
-                sino aquellos donde simplemente estamos juntos.
+            Gracias por convertirte en mi hogar,
+            por enseñarme que el amor es paz,
+            confianza y compañía.
 
-                <br><br>
+            <br><br>
 
-                Amo la vida que estamos construyendo,
-                los sueños que compartimos
-                y todo lo que todavía nos falta por vivir.
+            Contigo aprendí que los mejores planes no siempre son los más grandes,
+            sino aquellos donde simplemente estamos juntos.
 
-                <br><br>
+            <br><br>
 
-                Si algún día dudas de algo,
-                recuerda esto:
+            Amo la vida que estamos construyendo,
+            los sueños que compartimos
+            y todo lo que todavía nos falta por vivir.
 
-                <br><br>
+            <br><br>
 
-                Te elegiría una y otra vez.
+            Te elegiría una y otra vez.
 
-                <br><br>
+            <br><br>
 
-                Con todo mi amor,
+            💙 Tu futura esposa
 
-                <br><br>
-
-                💙 Tu futura esposa
-
-            </p>
-
-        </div>
+        </p>
 
     </div>
 
-</section>
+</div>
 </section>
 
 <footer>
@@ -1633,27 +1715,29 @@ toggleVideo.addEventListener('click', () => {
     const openLetter =
 document.getElementById('openLetter');
 
-const secretLetter =
-document.getElementById('secretLetter');
+const letterModal =
+document.getElementById('letterModal');
+
+const closeLetter =
+document.getElementById('closeLetter');
 
 openLetter.addEventListener('click', () => {
 
-    secretLetter.classList.toggle('show');
+    letterModal.classList.add('show');
 
-    if(secretLetter.classList.contains('show')){
+});
 
-        openLetter.innerHTML =
-        '💙 Guardar Carta';
+closeLetter.addEventListener('click', () => {
 
-        secretLetter.scrollIntoView({
-            behavior:'smooth',
-            block:'start'
-        });
+    letterModal.classList.remove('show');
 
-    }else{
+});
 
-        openLetter.innerHTML =
-        '💌 Abrir Carta';
+letterModal.addEventListener('click', (e) => {
+
+    if(e.target === letterModal){
+
+        letterModal.classList.remove('show');
 
     }
 
