@@ -455,6 +455,27 @@ footer{
 }
 
 /* ========================= */
+/* AUDIO PLAYER */
+/* ========================= */
+
+.audio-player{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #1D8FDB, #0d2e5d);
+    padding: 15px 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.audio-player audio{
+    width: 280px;
+    height: 35px;
+}
+
+/* ========================= */
 /* ANIMATIONS */
 /* ========================= */
 
@@ -504,6 +525,15 @@ footer{
 
     .gallery-item{
         border-radius:15px;
+    }
+
+    .audio-player{
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .audio-player audio{
+        width: 200px;
     }
 }
 
@@ -938,6 +968,13 @@ footer{
     Felices 18 meses mi vida • 15/06/2026
 </footer>
 
+<!-- AUDIO DE FONDO -->
+<div class="audio-player">
+    <audio autoplay loop muted>
+        <source src="audio/te-voy-a-amar.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
 <script>
 
 /* ========================= */
@@ -998,15 +1035,16 @@ cards.forEach(card => {
 
     });
 
-    /* VOLVER AL FRENTE AL QUITAR EL MOUSE */
-
-    card.addEventListener('mouseleave', () => {
-
-        card.classList.remove('flipped');
-
-    });
-
 });
+
+// PERMITIR INTERACCIÓN CON AUDIO
+document.addEventListener('click', function() {
+    const audio = document.querySelector('.audio-player audio');
+    if (audio.muted) {
+        audio.muted = false;
+        audio.play();
+    }
+}, { once: true });
 
 </script>
 
