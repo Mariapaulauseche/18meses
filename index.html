@@ -30,74 +30,30 @@ body{
 /* ========================= */
 /* PANTALLA DE BIENVENIDA */
 /* ========================= */
-
-.welcome-screen{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        #000,
-        #071425
-    );
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    z-index:99999;
-
-    transition:1s;
-}
-
-.welcome-screen.hide{
-
-    opacity:0;
-
-    visibility:hidden;
-
-}
-
 .welcome-card{
 
     text-align:center;
+    max-width:550px;
 
-    max-width:500px;
+    background:rgba(255,255,255,.04);
 
-    padding:50px;
+    backdrop-filter:blur(20px);
 
-}
+    border:1px solid rgba(255,255,255,.08);
 
-.heart-icon{
+    border-radius:40px;
 
-    font-size:4rem;
+    padding:60px;
 
-    margin-bottom:20px;
-
-    animation:pulse 2s infinite;
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.4);
 
 }
 
 .welcome-card h1{
 
     font-size:3rem;
-
     margin-bottom:20px;
-
-}
-
-.welcome-card p{
-
-    color:#cbd5e1;
-
-    margin-bottom:40px;
-
-    line-height:1.8;
 
 }
 
@@ -113,7 +69,7 @@ body{
 
     color:white;
 
-    padding:18px 40px;
+    padding:18px 45px;
 
     border-radius:999px;
 
@@ -125,29 +81,21 @@ body{
 
     transition:.4s;
 
+    box-shadow:
+    0 10px 30px rgba(
+        29,
+        143,
+        219,
+        .4
+    );
+
 }
 
 .start-btn:hover{
 
     transform:
-    translateY(-3px)
+    translateY(-4px)
     scale(1.05);
-
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.12);
-    }
-
-    100%{
-        transform:scale(1);
-    }
 
 }
 /* ========================= */
@@ -824,8 +772,7 @@ display:none;
 
         <button
     id="startExperience"
-    class="start-btn"
->
+    class="start-btn">
     Comencemos ✨
 </button>
 
@@ -1307,13 +1254,15 @@ display:none;
 
     startExperience.addEventListener('click', () => {
 
-        audio.volume = 0.3;
+    audio.play().catch(error =>
+        console.log(error)
+    );
 
-        audio.play();
+    playPauseBtn.textContent = '⏸️';
 
-        welcomeScreen.classList.add('hide');
+    welcomeScreen.classList.add('hide');
 
-    });
+});
 
 });
     
