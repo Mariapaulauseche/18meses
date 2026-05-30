@@ -588,29 +588,17 @@ footer{
 
 .video-container{
 
-    max-width:900px;
+    display:none;
+
+    max-width:450px;
 
     margin:30px auto 0;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    max-height:0;
-
-    opacity:0;
-
-    transition:
-    max-height .8s ease,
-    opacity .5s ease;
 
 }
 
 .video-container.show{
 
-    max-height:1000px;
-
-    opacity:1;
+    display:block;
 
 }
 
@@ -621,6 +609,7 @@ footer{
     display:block;
 
     border-radius:25px;
+     display:block;
 
 }
 /* ========================= */
@@ -968,7 +957,11 @@ footer{
         <video controls preload="metadata">
             <source src="videos/nosotros.mp4" type="video/mp4">
         </video>
-
+    <video
+    controls
+    preload="metadata"
+    playsinline
+>
     </div>
 
 </section>
