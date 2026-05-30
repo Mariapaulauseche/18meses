@@ -962,22 +962,16 @@ display:none;
     <div id="videoContainer" class="video-container">
 
         <video
-            controls
+            id="ourVideo"
             preload="metadata"
             playsinline
+            muted
         >
             <source src="videos/nosotros.mp4" type="video/mp4">
         </video>
 
     </div>
-<video
-    controls
-    preload="metadata"
-    playsinline
-    muted
->
-    <source src="videos/nosotros.mp4" type="video/mp4">
-</video>
+
 </section>
 
 </section>
@@ -1296,11 +1290,9 @@ document.querySelectorAll(
 
 
 // boton video galeria 
-    const toggleVideo =
-document.getElementById('toggleVideo');
-
-const videoContainer =
-document.getElementById('videoContainer');
+    const toggleVideo = document.getElementById('toggleVideo');
+const videoContainer = document.getElementById('videoContainer');
+const ourVideo = document.getElementById('ourVideo');
 
 toggleVideo.addEventListener('click', () => {
 
@@ -1308,17 +1300,26 @@ toggleVideo.addEventListener('click', () => {
 
     if(videoContainer.classList.contains('show')){
 
-        toggleVideo.innerHTML =
-        '💚 Ocultar Video';
+        toggleVideo.innerHTML = '💚 Guardar recuerdo';
+
+        ourVideo.play();
+
+        videoContainer.scrollIntoView({
+            behavior:'smooth',
+            block:'center'
+        });
 
     }else{
 
-        toggleVideo.innerHTML =
-        '❤️ Clic';
+        toggleVideo.innerHTML = '💙 Clic';
+
+        ourVideo.pause();
+        ourVideo.currentTime = 0;
 
     }
 
 });
+        
     </script>
 </body>
 </html>
