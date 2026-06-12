@@ -351,51 +351,40 @@ body{
 /* GALERÍA - GRID RECTANGULAR */
 /* ========================= */
 
-    .gallery-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-.gallery-item{
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    background:#111;
-}
-.gallery-item{
-    break-inside:avoid;
-    margin-bottom:20px;
+ /* ========================= */
+/* GALERÍA - GRID RECTANGULAR */
+/* ========================= */
+
+.gallery-grid {
+    display: grid;
+    /* Esto fuerza exactamente 3 columnas del mismo tamaño */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
 }
 
-.gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:transform 0.5s ease;
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #111;
+    /* Le damos una altura fija a las tarjetas de la galería para que sean uniformes */
+    aspect-ratio: 4 / 3; 
+    width: 100%;
 }
 
-.gallery-item:hover img{
-    transform:scale(1.08);
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto evita que las fotos se estiren o se deformen */
+    transition: transform 0.5s ease;
 }
-
-.gallery-caption{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    padding:20px;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,0.9),
-        rgba(0,0,0,0.5),
-        transparent
     );
     font-size:0.95rem;
     line-height:1.6;
     color:white;
     opacity:0;
     transition:opacity 0.4s ease;
-}
+
 
 .gallery-item:hover .gallery-caption{
     opacity:1;
