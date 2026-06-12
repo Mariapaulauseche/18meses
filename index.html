@@ -347,19 +347,16 @@ body{
     z-index:2;
 }
 
-/* ========================= */
-/* GALERÍA - GRID RECTANGULAR */
-/* ========================= */
-
- /* ========================= */
-/* GALERÍA - GRID RECTANGULAR */
-/* ========================= */
+/* ==========================================================================
+   GALERÍA - GRID RECTANGULAR (3 COLUMNAS X 2 FILAS) Y TEXTO INTERACTIVO
+   ========================================================================== */
 
 .gallery-grid {
     display: grid;
-    /* Esto fuerza exactamente 3 columnas del mismo tamaño */
+    /* Fuerza exactamente 3 columnas iguales en pantallas grandes */
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
+    padding: 20px 0;
 }
 
 .gallery-item {
@@ -367,29 +364,96 @@ body{
     overflow: hidden;
     border-radius: 20px;
     background: #111;
-    /* Le damos una altura fija a las tarjetas de la galería para que sean uniformes */
+    /* Mantiene todas las tarjetas con una proporción uniforme (4:3) */
     aspect-ratio: 4 / 3; 
     width: 100%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto de elevación en la tarjeta completa al pasar el mouse */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esto evita que las fotos se estiren o se deformen */
-    transition: transform 0.5s ease;
-}
-    );
-    font-size:0.95rem;
-    line-height:1.6;
-    color:white;
-    opacity:0;
-    transition:opacity 0.4s ease;
-
-
-.gallery-item:hover .gallery-caption{
-    opacity:1;
+    object-fit: cover; /* Evita que las imágenes se estiren o deformen */
+    transition: transform 0.6s ease;
 }
 
+/* Zoom sutil a la foto cuando se pasa el mouse */
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Texto interactivo sobre la imagen */
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Degradado oscuro para garantizar una excelente legibilidad del texto */
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85) 70%);
+    color: #ffffff;
+    padding: 25px 15px 15px 15px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+    
+    /* Estado inicial: oculto y desplazado hacia abajo */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Cuando se pasa el mouse, el texto se desliza hacia arriba y se muestra */
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   OPTIMIZACIÓN RESPONSIVE (PANTALLAS MEDIANAS Y CELULARES)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .gallery-grid {
+        /* En pantallas medianas (tablets), pasa a 2 columnas x 3 filas */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        /* En celulares, 1 sola columna para que las fotos luzcan grandes y claras */
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+
+    .gallery-item {
+        border-radius: 15px;
+        /* En celulares cambiamos la proporción a 16:9 para que no ocupe tanto espacio vertical */
+        aspect-ratio: 16 / 9; 
+    }
+
+    /* En pantallas táctiles no existe el "hover" (pasar el mouse), 
+       así que hacemos que el texto sea siempre visible en celulares */
+    .gallery-caption {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.75) 50%);
+        font-size: 0.85rem;
+        padding: 15px 10px 10px 10px;
+    }
+}
 /* ========================= */
 /* FLIP CARDS */
 /* ========================= */
